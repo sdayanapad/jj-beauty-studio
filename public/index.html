@@ -788,7 +788,7 @@ var SV=[
  [2,'Diseño de cejas',null],[2,'Perforación con cuchilla',5000],[2,'Pigmentación con henna',15000],[2,'Pigmentación con tinte',15000],
  [3,'Fulani braids',BR],[3,'Bohemian braids',BR],[3,'Knotless braids',BR],[3,'Goddess braids',BR],[3,'Trenzas africanas',BR],[3,'Trenzas pegadas',BR]
 ];
-function price(p){return p===null?'Consultar':(Array.isArray(p)?fmt(p[0])+' – '+fmt(p[1]):(typeof p==='number'?fmt(p):p))}
+function price(p){return p===null?'Consultar':(Array.isArray(p)?'Por definir':(typeof p==='number'?fmt(p):p))}
 var GAL=[
  ['w3','En proceso y resultado','cejas'],['n1','Bohemian braids color vino','trenzas'],['w1','Henna + efecto foxy','cejas'],['n2','Bohemian braids','trenzas'],
  ['w2','Henna + efecto anime','cejas'],['n3','Trenzas largas con rizos','trenzas'],['w4','Henna + efecto foxy','cejas'],['h1','Bohemian braids','trenzas'],
@@ -829,7 +829,7 @@ pin.addEventListener('click',toggleMine);$('#pin2').addEventListener('click',tog
 /* services */
 var curTab=0,tabs=$('#tabs'),svc=$('#svc');
 tabs.innerHTML=CATS.map(function(c,i){return '<button class="tab" role="tab" data-i="'+i+'" aria-selected="'+(i===0)+'">'+c+'</button>'}).join('');
-function renderSvc(){svc.innerHTML=SV.map(function(s,i){return s[0]===curTab?'<div class="row" style="animation-delay:'+(i%5*60)+'ms"><span class="n">'+s[1]+'</span><span class="p">'+price(s[2])+'</span><button class="go" data-s="'+i+'" aria-label="Reservar '+s[1]+'">→</button></div>':''}).join('')+(curTab===3?'<p class="svnote">Mano de obra, no incluye productos. El valor exacto depende del tipo de trenza, el largo y el grosor, y te lo confirmo por WhatsApp.</p>':'')}
+function renderSvc(){svc.innerHTML=SV.map(function(s,i){return s[0]===curTab?'<div class="row" style="animation-delay:'+(i%5*60)+'ms"><span class="n">'+s[1]+'</span><span class="p">'+price(s[2])+'</span><button class="go" data-s="'+i+'" aria-label="Reservar '+s[1]+'">→</button></div>':''}).join('')+(curTab===3?'<p class="svnote">Trenzas: la mano de obra va de $50.000 a $90.000 según el tipo, el largo y el grosor. El valor exacto lo confirmo por WhatsApp. No incluye productos.</p>':'')}
 tabs.addEventListener('click',function(e){var b=e.target.closest('.tab');if(!b)return;curTab=+b.dataset.i;$$('.tab',tabs).forEach(function(t){t.setAttribute('aria-selected',t===b)});renderSvc()});
 svc.addEventListener('click',function(e){var b=e.target.closest('.go');if(!b)return;pick(+b.dataset.s);$('#reservar').scrollIntoView({behavior:reduce?'auto':'smooth'})});
 renderSvc();
