@@ -722,7 +722,7 @@ body .stats{gap:44px}
       <div class="chips" id="bsvc" style="margin-top:12px"></div>
       <p class="hintsel" id="selhint"></p></div>
     </div><div class="stp" data-s="3"><div class="dh"><div><div class="lab">Día</div><div class="cal" id="bday"></div></div>
-      <div><div class="lab">Hora</div><div class="chips hrs" id="bhr"></div><p class="slotnote">El turno de las 8:00 a. m. tiene un recargo de $10.000. El último turno del día es a las 6:00 p. m.</p></div></div>
+      <div><div class="lab">Hora</div><div class="chips hrs" id="bhr"></div><p class="slotnote">El turno de las 7:00 a. m. tiene un recargo de $10.000. El último turno del día es a las 6:00 p. m.</p></div></div>
     <div class="braid" id="braid" hidden>
       <h4>Si eliges trenzas, ten en cuenta</h4>
       <ul>
@@ -863,8 +863,8 @@ $('#faqs').addEventListener('click',function(e){var b=e.target.closest('button')
 /* booking */
 var LIVE=true; /* true solo en la versión publicada con calendario (_worker.js) */
 var API='/api',OTHER_MIN=90,lastMsg='',lastCode='';
-var HRS=['8:00 a. m.','9:00 a. m.','10:30 a. m.','12:00 m.','2:00 p. m.','3:30 p. m.','5:00 p. m.','6:00 p. m.'];
-var HMIN=[480,540,630,720,840,930,1020,1080];
+var HRS=['7:00 a. m.','8:00 a. m.','9:00 a. m.','10:30 a. m.','12:00 m.','2:00 p. m.','3:30 p. m.','5:00 p. m.','6:00 p. m.'];
+var HMIN=[420,480,540,630,720,840,930,1020,1080];
 var EXTRA={0:10000}; /* recargo por horario */
 var DUR={'Trenzas africanas':6,'Bohemian braids':6,'Trenzas pegadas':6,'Fulani braids':6}; /* horas aprox. por persona */
 /* grupos excluyentes: dentro de un grupo solo se elige uno por persona */
@@ -918,7 +918,7 @@ function draw(){
     p.sel.forEach(function(i){any=true;var pr=SV[i][2];if(typeof pr==='number')total+=pr;else vari=true});
     if(p.sel.length){if(P.length>1)lines.push('<b>'+pname(k)+'</b>');p.sel.forEach(function(i){lines.push(SV[i][1]+' · '+price(SV[i][2]))})}});
   if(st.day||st.hr!==null)lines.push((st.day?dtxt(st.day):'')+(st.day&&st.hr!==null?' · ':'')+(st.hr!==null?HRS[st.hr]:''));
-  if(ex&&any){total+=ex;lines.push('Recargo horario 8:00 a. m. · '+fmt(ex))}
+  if(ex&&any){total+=ex;lines.push('Recargo horario '+HRS[st.hr]+' · '+fmt(ex))}
   $('#sw').innerHTML=any?lines.join('<br>'):'Elige al menos un servicio';
   var mn=$('#mini');mn.hidden=st.step===1;mn.innerHTML='<span><small>Personas</small>'+P.length+'</span><span class="mf"><small>Fecha</small>'+(st.day?dtxt(st.day):'sin elegir')+(st.hr!==null?' · '+HRS[st.hr]:'')+'</span><span><small>Total</small>'+(any?(total?fmt(total):'Por definir'):'—')+'</span>';
   $('#sp').innerHTML=!any?'—':(total?fmt(total):'Por definir')+(vari&&total?'<small>+ servicios según diseño</small>':(vari?'<small>según diseño</small>':''));
