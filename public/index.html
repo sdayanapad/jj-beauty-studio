@@ -786,7 +786,7 @@ var SV=[
  [0,'Soft gel',30000],[0,'Semipermanentes manos',25000],[0,'Semipermanentes pies',25000],[0,'Tradicionales',15000],[0,'Press on',35000],[0,'Retiro',10000],
  [1,'Volumen ruso',15000],[1,'Efecto foxy',15000],[1,'Efecto anime',15000],
  [2,'Diseño de cejas',null],[2,'Perforación con cuchilla',5000],[2,'Pigmentación con henna',15000],[2,'Pigmentación con tinte',15000],
- [3,'Fulani braids',BR],[3,'Bohemian braids',BR],[3,'Knotless braids',BR],[3,'Goddess braids',BR],[3,'Trenzas africanas',BR],[3,'Trenzas pegadas',BR]
+ [3,'Fulani braids',BR],[3,'Bohemian braids',BR],[3,'Knotless braids',BR],[3,'Goddess braids',BR],[3,'Trenzas africanas',BR],[3,'Trenzas pegadas',BR],[3,'No sé cuál elegir (asesoría)',BR]
 ];
 function price(p){return p===null?'Consultar':(Array.isArray(p)?'Por definir':(typeof p==='number'?fmt(p):p))}
 var GAL=[
@@ -868,9 +868,9 @@ var API='/api',OTHER_MIN=90,lastMsg='',lastCode='';
 var HRS=['7:00 a. m.','8:00 a. m.','9:00 a. m.','10:30 a. m.','12:00 m.','2:00 p. m.','3:30 p. m.','5:00 p. m.','6:00 p. m.'];
 var HMIN=[420,480,540,630,720,840,930,1020,1080];
 var EXTRA={0:10000}; /* recargo por horario */
-var DUR={'Fulani braids':6,'Knotless braids':6,'Goddess braids':6,'Trenzas africanas':6,'Bohemian braids':6,'Trenzas pegadas':6,'Fulani braids':6}; /* horas aprox. por persona */
+var DUR={'No sé cuál elegir (asesoría)':6,'Fulani braids':6,'Knotless braids':6,'Goddess braids':6,'Trenzas africanas':6,'Bohemian braids':6,'Trenzas pegadas':6,'Fulani braids':6}; /* horas aprox. por persona */
 /* grupos excluyentes: dentro de un grupo solo se elige uno por persona */
-var GRP={1:'manos',0:'manos',3:'manos',4:'manos',6:'pest',7:'pest',8:'pest',11:'pig',12:'pig',13:'trenza',14:'trenza',15:'trenza',16:'trenza',17:'trenza',18:'trenza'};
+var GRP={1:'manos',0:'manos',3:'manos',4:'manos',6:'pest',7:'pest',8:'pest',11:'pig',12:'pig',13:'trenza',14:'trenza',15:'trenza',16:'trenza',17:'trenza',18:'trenza',19:'trenza'};
 var GNOTE={manos:'ya elegiste un sistema para las manos',pest:'solo un estilo de pestañas',pig:'solo un tipo de pigmentación',trenza:'solo una trenza por persona'};
 var st={ap:0,cat:0,day:null,hr:null,busy:null,busyKey:'',P:[{name:'',sel:[]}]};
 var DN=['dom','lun','mar','mié','jue','vie','sáb'],MN=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
